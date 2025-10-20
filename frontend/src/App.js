@@ -2198,46 +2198,18 @@ function Dashboard({ user, onLogout }) {
 }
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const response = await api.get("/auth/me");
-        setUser(response.data);
-      } catch (error) {
-      }
-      setLoading(false);
-    };
-    checkAuth();
-  }, []);
-
-  const handleLogin = (userData) => {
-    setUser(userData);
+  // No authentication - always show dashboard with mock user
+  const mockUser = {
+    username: "viewer",
+    email: "viewer@tracker.com",
+    role: "viewer"
   };
 
-  const handleLogout = async () => {
-    try {
-      await api.post("/auth/logout");
-    } catch (error) {
-    }
-    setUser(null);
+  const handleLogout = () => {
+    // No-op: logout disabled in simplified version
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
-      </div>
-    );
-  }
-
-  return user ? (
-    <Dashboard user={user} onLogout={handleLogout} />
-  ) : (
-    <LoginPage onLogin={handleLogin} />
-  );
+  return <Dashboard user={mockUser} onLogout={handleLogout} />;
 }
 
 export default App;
