@@ -22,28 +22,8 @@ console.log('API URL:', API);
 
 const api = axios.create({
   baseURL: API,
-  withCredentials: true
+  withCredentials: false // No auth needed
 });
-
-api.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
-    
-    if (error.response?.status === 401 && !originalRequest._retry && !originalRequest.url?.includes('/auth/refresh')) {
-      originalRequest._retry = true;
-      
-      try {
-        await axios.post(`${API}/auth/refresh`, {}, { withCredentials: true });
-        return api(originalRequest);
-      } catch (refreshError) {
-        return Promise.reject(refreshError);
-      }
-    }
-    
-    return Promise.reject(error);
-  }
-);
 
 const formatUKTimestamp = (dateString) => {
   if (!dateString) return "N/A";
