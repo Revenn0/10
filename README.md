@@ -3,8 +3,8 @@
 This is a full‑stack MVP that ingests tracker alert emails (via Gmail IMAP), stores normalized alerts in Neon (PostgreSQL), and provides a React (CRA + Tailwind + shadcn/ui) dashboard with auth, filtering, bikes view, and admin user management.
 
 Live preview (current deploy on Emergent)
-- Frontend: https://alerttracker-3.preview.emergentagent.com
-- Backend base: https://alerttracker-3.preview.emergentagent.com/api
+- Frontend: https://tracker-dashboard-2.preview.emergentagent.com
+- Backend base: https://tracker-dashboard-2.preview.emergentagent.com/api
 
 Important: All backend endpoints are prefixed with /api. Frontend must use REACT_APP_BACKEND_URL + /api.
 
@@ -45,7 +45,7 @@ APP_ENV=development  # or production (forces secure cookies)
 JWT_SECRET_KEY=your_long_random_secret
 
 # Optional metadata for Stack Auth (not required for current login flow)
-STACK_PROJECT_ID=96941442-1c79-4bdf-acbd-59ed08d16109
+STACK_PROJECT_ID=tracker-dashboard-2
 STACK_JWKS_URL=https://api.stack-auth.com/api/v1/projects/96941442-1c79-4bdf-acbd-59ed08d16109/.well-known/jwks.json
 ```
 
@@ -55,7 +55,7 @@ Frontend: frontend/.env (copy from .env.example)
 REACT_APP_BACKEND_URL=http://localhost:8001
 
 # Optional metadata for Stack Auth (not required for current login flow)
-REACT_APP_STACK_PROJECT_ID=96941442-1c79-4bdf-acbd-59ed08d16109
+REACT_APP_STACK_PROJECT_ID=tracker-dashboard-2
 REACT_APP_STACK_PUBLISHABLE_CLIENT_KEY=pck_...
 ```
 

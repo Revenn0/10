@@ -38,7 +38,7 @@ db_pool: asyncpg.Pool = None  # type: ignore
 
 # CORS for cross-site frontend (e.g., Netlify)
 DEFAULT_ALLOWED_ORIGINS = [
-    "https://alerttracker-3.preview.emergentagent.com",
+    "https://tracker-dashboard-2.preview.emergentagent.com",
     "https://tracker4th.netlify.app",
 ]
 allowed_origins_env = os.environ.get("ALLOWED_ORIGINS", "").strip()
